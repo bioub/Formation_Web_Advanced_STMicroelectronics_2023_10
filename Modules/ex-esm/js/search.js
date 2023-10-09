@@ -1,13 +1,13 @@
 // export filters et search
 
-const filters = {
+export const filters = {
   name: '',
   fmRadio: 'whatever',
   availability: [],
 };
 
 /** @param {HTMLElement} mainEl */
-function search(mainEl) {
+export default function search(mainEl) {
   const template = `
 <div id="filters">
   <div class="form-row">

@@ -1,7 +1,7 @@
 // exporter notFound
 
 /** @param {HTMLElement} mainEl */
-function notFound(mainEl) {
+export default function notFound(mainEl) {
   const template = `
 <p>Page not found</p>
   `;

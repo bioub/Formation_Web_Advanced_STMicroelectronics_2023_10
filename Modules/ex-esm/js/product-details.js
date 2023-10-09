@@ -1,8 +1,10 @@
 // importer selectedProduct
 // exporter productDetails
 
+import { selectedProduct } from "./products.js";
+
 /** @param {HTMLElement} mainEl */
-function productDetails(mainEl) {
+export default function productDetails(mainEl) {
   if (!selectedProduct && localStorage.getItem("selectedProduct")) {
     selectedProduct = JSON.parse(localStorage.getItem("selectedProduct"));
   } else if (!selectedProduct) {

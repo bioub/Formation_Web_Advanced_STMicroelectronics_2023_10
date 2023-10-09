@@ -1,7 +1,8 @@
 // importer en CommonJS getRandomInt (et remplacer l'appel si besoin ligne 29)
 const readline = require('readline');
+const { getRandomInt } = require('./random');
 
-class Jeu {
+module.exports = class Jeu {
   // ECMAScript 2022 (Class fields)
   #rl = readline.createInterface({
     input: process.stdin,
@@ -26,7 +27,7 @@ class Jeu {
     //   input: process.stdin,
     //   output: process.stdout,
     // });
-    this.entierAlea = Random.getRandomInt(this.min, this.max);
+    this.entierAlea = getRandomInt(this.min, this.max);
     this.essais = [];
   }
   jouer() {
