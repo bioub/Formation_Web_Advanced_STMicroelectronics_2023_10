@@ -1,0 +1,28 @@
+#products {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+#products td,
+#products th {
+  border: 1px solid rgba(0, 0, 0, 0.54);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+#products th {
+  background-color: #f5f7f7;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+#products td:first-child, #products th:first-child {
+  width: 200px;
+}
+
+#products td:last-child, #products th:last-child {
+  width: 50px;
+}
