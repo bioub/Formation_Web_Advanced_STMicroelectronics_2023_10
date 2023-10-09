@@ -5,5 +5,3 @@ const chalk = require('chalk');
 console.log(sum(1, 2)); // 3
 console.log(sub(1, 2)); // -1
 console.log(chalk.red(hello('Romain'))); // Hello Romain
-
-
