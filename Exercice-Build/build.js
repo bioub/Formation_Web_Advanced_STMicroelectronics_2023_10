@@ -17,6 +17,8 @@ async function rmAndMkdir(dirPath) {
 }
 
 async function buildJs() {
+  // Exercice 3
+  // Utiliser Promise.all pour lire les 2 fichiers en même temps
   const bufHorloge = await fs.readFile(horlogeJsPath);
   const bufIndex = await fs.readFile(indexJsPath);
 

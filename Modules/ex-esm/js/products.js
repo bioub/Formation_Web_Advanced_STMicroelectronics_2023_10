@@ -30,6 +30,10 @@ export default function products(mainEl) {
 
   const tableEl = mainEl.querySelector('table');
 
+
+  // Exercice 2
+  // transformer products en fonction async
+  // et utiliser await
   fetchProducts().then((data) => {
     productsList = data.rows.map((r) => r.doc);
 
@@ -52,6 +56,9 @@ export default function products(mainEl) {
   });
 }
 
+// Exercice 1
+// Transformer cette fonction en fonction async
+// et utiliser await
 function fetchProducts() {
   return fetch(
     'https://6a59157b-430d-4969-b802-b9c12470dafb-bluemix.cloudantnosqldb.appdomain.cloud/phones/_all_docs?include_docs=true',
