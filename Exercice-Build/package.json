@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "terser": "^5.21.0"
+  },
+  "scripts": {
+    "serve:dev": "serve src",
+    "serve:prod": "serve dist",
+    "build": "node build.js"
+  }
+}
