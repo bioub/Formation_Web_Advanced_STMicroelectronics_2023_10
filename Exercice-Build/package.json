@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "minimist": "^1.2.8",
     "serve": "^14.2.1",
     "terser": "^5.21.0"
   },
