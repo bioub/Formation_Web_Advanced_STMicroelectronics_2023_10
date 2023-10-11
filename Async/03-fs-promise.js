@@ -38,4 +38,3 @@ fs.readFile('package.json')
   .then((data) => fs.writeFile('package.json.copy', data))
   .then(() => console.log('Copy done'))
   .catch((err) => console.log(err));
-  

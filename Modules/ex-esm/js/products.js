@@ -14,7 +14,7 @@ if (selectedProductLocalStorage) {
 let productsList = [];
 
 /** @param {HTMLElement} mainEl */
-export default function products(mainEl) {
+export default async function products(mainEl) {
   const template = `
 <table id="products">
   <tr>
@@ -29,20 +29,6 @@ export default function products(mainEl) {
   mainEl.innerHTML = template;
 
   const tableEl = mainEl.querySelector('table');
-
-
-  // Exercice 2
-  // transformer products en fonction async
-  // et utiliser await
-  fetchProducts().then((data) => {
-    productsList = data.rows.map((r) => r.doc);
-
-    for (const product of applyFilters(productsList)) {
-      const trEl = createProductRow(product);
-      tableEl.appendChild(trEl);
-    }
-  });
-
   tableEl.addEventListener('click', (event) => {
     /** @type {HTMLElement} */
     const target = event.target;
@@ -54,15 +40,20 @@ export default function products(mainEl) {
       localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
     }
   });
+
+  const data = await fetchProducts();
+  productsList = data.rows.map((r) => r.doc);
+
+  for (const product of applyFilters(productsList)) {
+    const trEl = createProductRow(product);
+    tableEl.appendChild(trEl);
+  }
 }
 
-// Exercice 1
-// Transformer cette fonction en fonction async
-// et utiliser await
-function fetchProducts() {
-  return fetch(
-    'https://6a59157b-430d-4969-b802-b9c12470dafb-bluemix.cloudantnosqldb.appdomain.cloud/phones/_all_docs?include_docs=true',
-  ).then((res) => res.json());
+async function fetchProducts() {
+  const res = await fetch(
+    'https://6a59157b-430d-4969-b802-b9c12470dafb-bluemix.cloudantnosqldb.appdomain.cloud/phones/_all_docs?include_docs=true');
+  return await res.json();
 }
 
 function createProductRow(product) {

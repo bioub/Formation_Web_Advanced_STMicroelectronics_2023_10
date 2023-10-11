@@ -16,7 +16,7 @@ try {
 // |
 // |
 // |
-// |try { [readFile                     ][writeFile                 ][lg] }
+// |try { [readFileSync                     ][writeFileSync                 ][lg] }
 // +----------------------------------------------------------------------------> temps
 
 

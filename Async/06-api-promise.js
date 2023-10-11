@@ -1,5 +1,5 @@
 // Promise est un API (une classe) apparue en ES2015
-// avec des nouveautés ajoutés en 2018, 2019, 2021
+// avec des nouveautés ajoutés en 2018 (.finally), 2020 (Promise.allSettled), 2021 (Promise.any)
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 // Le constructeur est utile pour transformer un API asynchrone basé sur des callbacks
