@@ -1,17 +1,9 @@
-// TODO: déclare les type d'entrée et de retour
-// todo est un object
+import { Todo } from "./todo";
 
-/**
- * @param {object} todo
- * @param {number} todo.id
- * @param {string} todo.title
- * @param {boolean} todo.completed
- * @returns {HTMLDivElement}
- */
-export function createTodo(todo) {
+export function createTodo(todo: Todo): HTMLDivElement {
   const rowEl = document.createElement('div');
   rowEl.className = 'todos-item';
-  rowEl.dataset.todoId = todo.id;
+  rowEl.dataset.todoId = String(todo.id);
 
   const checkboxEl = document.createElement('input');
   checkboxEl.type = 'checkbox';
@@ -29,22 +21,14 @@ export function createTodo(todo) {
   return rowEl;
 }
 
-/**
- * @param {string} val
- * @returns {HTMLSpanElement}
- */
-export function createSpanValue(val) {
+export function createSpanValue(val: string): HTMLSpanElement {
   const spanEl = document.createElement('span');
   spanEl.className = 'todos-span-value';
   spanEl.innerText = val;
   return spanEl;
 }
 
-/**
- * @param {string} val
- * @returns {HTMLInputElement}
- */
-export function createInputValue(val) {
+export function createInputValue(val: string): HTMLInputElement {
   const inputEl = document.createElement('input');
   inputEl.className = 'todos-input-value';
   inputEl.value = val;

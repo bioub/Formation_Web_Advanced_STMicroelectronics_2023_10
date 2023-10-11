@@ -1,26 +1,13 @@
+import { Todo } from './todo.js';
 import { createInputValue, createSpanValue, createTodo } from './todos.js';
 
-// TODO : pour tous les querySelector utiliser
-// - soit le type generic + non null assertion (le !)
-// - soit assertion de type (as HTML...Element)
-
-/** @type {HTMLFormElement} */
-const formEl = document.querySelector('.todos-form');
-
-/** @type {HTMLInputElement} */
-const inputEl = document.querySelector('.todos-new-input');
-
-/** @type {HTMLDivElement} */
-const divEl = document.querySelector('.todos-container');
-
-/** @type {HTMLInputElement} */
-const toggleEl = document.querySelector('.todos-toggle-checked');
+const formEl = document.querySelector('.todos-form') as HTMLFormElement;
+const inputEl = document.querySelector('.todos-new-input') as HTMLInputElement;
+const divEl = document.querySelector('.todos-container') as HTMLDivElement;
+const toggleEl = document.querySelector('.todos-toggle-checked') as HTMLInputElement;
 
 toggleEl.addEventListener('click', () => {
-  // TODO: type generic
-
-  /** @type {NodeListOf<HTMLInputElement>} */
-  const checkboxEls = divEl.querySelectorAll('.todos-completed');
+  const checkboxEls = divEl.querySelectorAll<HTMLInputElement>('.todos-completed');
 
   for (const checkboxEl of checkboxEls) {
     checkboxEl.checked = toggleEl.checked;
@@ -39,23 +26,15 @@ formEl.addEventListener('submit', (event) => {
 });
 
 divEl.addEventListener('click', (event) => {
-  // TODO : assertion de type (sur target)
+  const target = event.target as HTMLElement;
 
-  /** @type {HTMLElement} */
-  const target = event.target;
-
-  // TODO : closest peut retourner null
-  // donc ajouter un if ou un ? ou un !
   if (target.classList.contains('todos-delete-btn')) {
-    target.closest('.todos-item').remove();
+    target.closest('.todos-item')!.remove();
   }
 });
 
 divEl.addEventListener('dblclick', (event) => {
-  // TODO : assertion de type (sur target)
-
-  /** @type {HTMLElement} */
-  const target = event.target;
+  const target = event.target as HTMLElement;
 
   if (target.classList.contains('todos-span-value')) {
     const inputEl = createInputValue(target.innerText);
@@ -64,33 +43,30 @@ divEl.addEventListener('dblclick', (event) => {
 });
 
 divEl.addEventListener('keydown', (event) => {
-  /** @type {HTMLElement} */
-  const target = event.target;
+  const target = event.target as HTMLElement;
 
   if (
     target.classList.contains('todos-input-value') &&
     event.code === 'Enter'
   ) {
-    target.replaceWith(createSpanValue(target.value));
+    target.replaceWith(createSpanValue((target as HTMLInputElement).value));
   }
 });
 
-// TODO : utiliser top level await (voir chapitre Async)
-fetch('https://jsonplaceholder.typicode.com/todos')
-  .then((res) => res.json())
-  .then((todos) => {
-    for (const todo of todos.slice(0, 20)) {
-      const itemEl = createTodo(todo);
-      divEl.append(itemEl);
-    }
-  });
+const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+const todos: Todo[] = await res.json();
+
+for (const todo of todos.slice(0, 20)) {
+  const itemEl = createTodo(todo);
+  divEl.append(itemEl);
+}
 
 
 inputEl.addEventListener('input', () => {
   localStorage.setItem('new-todo', inputEl.value);
 });
 
-// TODO : refactorer avec une variable pour éviter null
-if (localStorage.getItem('new-todo')) {
-  inputEl.value = localStorage.getItem('new-todo');
+const newTodoFromStorage = localStorage.getItem('new-todo');
+if (newTodoFromStorage) {
+  inputEl.value = newTodoFromStorage;
 }
