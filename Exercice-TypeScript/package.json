@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "ncp": "^2.0.0",
+    "serve": "^14.2.0",
+    "typescript": "^5.0.3"
+  },
+  "scripts": {
+    "build": "ncp src/index.html dist/index.html && tsc"
+  }
+}
