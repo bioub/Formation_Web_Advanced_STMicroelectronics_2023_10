@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "TypeScript"
+		},
+		{
+			"path": "Exercice-TypeScript"
 		}
 	],
 	"settings": {}

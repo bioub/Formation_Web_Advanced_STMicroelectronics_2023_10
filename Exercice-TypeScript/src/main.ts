@@ -1,4 +1,4 @@
-import { createInputValue, createSpanValue, createTodo } from './todos';
+import { createInputValue, createSpanValue, createTodo } from './todos.js';
 
 // TODO : pour tous les querySelector utiliser
 // - soit le type generic + non null assertion (le !)
