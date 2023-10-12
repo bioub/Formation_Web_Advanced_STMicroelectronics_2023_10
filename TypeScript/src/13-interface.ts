@@ -63,6 +63,6 @@ function withCallback3(cb: MyCallback) {
   cb('ABC');
 }
 
-withCallback((test) => {
+withCallback3((test) => {
   console.log(test.toUpperCase());
 })

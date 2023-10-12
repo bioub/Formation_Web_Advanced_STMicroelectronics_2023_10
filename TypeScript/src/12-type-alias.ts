@@ -1,5 +1,5 @@
 type primitive = string | number | boolean;
-type Coords = { x: number; y: number };
+type Coords = { x: number; y: number, z?: number };
 
 
 function withUnion3(val: primitive) {}
@@ -9,7 +9,7 @@ const coordsC: Coords = {
   y: 2,
 };
 
-coordsB.z = 3;
+coordsC.z = 3;
 
 
 type myCallback1 = (val: string) => void;
