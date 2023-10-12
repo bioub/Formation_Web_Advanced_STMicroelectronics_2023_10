@@ -1,5 +1,6 @@
 type primitive = string | number | boolean;
-type Coords = { x: number; y: number; [key: string]: number };
+type Coords = { x: number; y: number };
+
 
 function withUnion3(val: primitive) {}
 

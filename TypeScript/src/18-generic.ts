@@ -25,13 +25,13 @@ identity(123).toFixed();
 class Stack<T> {
   private list: T[] = [];
 
-  push(val: T) {
+  push(val: T): void {
     this.list.push(val);
   }
-  pop() {
+  pop(): T | undefined {
     return this.list.pop();
   }
-  peek() {
+  peek(): T | undefined {
     return this.list.at(-1);
   }
 }
@@ -45,9 +45,9 @@ console.log(cartes.peek()?.toLowerCase()); // 3 de treffle
 
 
 function timeout(delayMs: number) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<number>((resolve, reject) => {
     setTimeout(() => {
-      resolve();
+      resolve(delayMs);
     }, delayMs);
   });
 }
