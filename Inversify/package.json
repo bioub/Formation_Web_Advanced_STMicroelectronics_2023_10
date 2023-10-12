@@ -8,6 +8,8 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@types/node": "^16.18.58"
+    "@types/node": "^16.18.58",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13"
   }
 }

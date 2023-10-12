@@ -1,9 +1,9 @@
-import { inject, injectable } from "inversify";
+import { inject, injectable, tagged } from "inversify";
 import { WriterInterface } from "./WriterInterface.js";
 
 @injectable()
 export class Logger {
-  constructor(@inject(WriterInterface) private writer: WriterInterface) {}
+  constructor(@tagged('env', process.env.NODE_ENV ?? 'development') @inject(WriterInterface) private writer: WriterInterface) {}
 
   async log(msg: string) {
     const formatted = `${new Date().toISOString()} - ${msg}\n`;
