@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@types/node": "^16.18.58"
+  }
+}

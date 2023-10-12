@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "Exercice-TypeScript"
+		},
+		{
+			"path": "Inversify"
 		}
 	],
 	"settings": {}
