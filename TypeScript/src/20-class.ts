@@ -40,6 +40,10 @@ abstract class AbstractUser {
 
 
 class Contact2 {
+  // protected name: string;
+  // constructor(name: string) {
+  //   this.name = name;
+  // }
   constructor(protected name: string) {} // équivalent à déclarer la propriété, le param et affecter le param à la propriété
   hello() {
     return `Hello ${this.name}`;

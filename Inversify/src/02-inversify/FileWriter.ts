@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { WriterInterface } from "./WriterInterface.js";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 
 @injectable()
 export class FileWriter implements WriterInterface {

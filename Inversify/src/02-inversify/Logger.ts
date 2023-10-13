@@ -1,6 +1,7 @@
 import { inject, injectable } from "inversify";
 import { WriterInterface } from "./WriterInterface.js";
 
+
 @injectable()
 export class Logger {
   constructor(@inject(WriterInterface) private writer: WriterInterface) {}

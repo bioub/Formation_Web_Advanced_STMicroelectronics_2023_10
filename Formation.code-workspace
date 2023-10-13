@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "Inversify"
+		},
+		{
+			"path": "Exercise-Inversify"
 		}
 	],
 	"settings": {}
