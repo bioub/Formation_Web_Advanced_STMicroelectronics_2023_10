@@ -1,8 +1,7 @@
-import { HttpClient } from './HttpClient';
-import { UserPage } from './UserPage';
-import { UserService } from './UserService';
+import 'reflect-metadata';
 
-const httpClient = new HttpClient();
-const userService = new UserService(httpClient);
-const userPage = new UserPage(userService);
+import { UserPage } from './UserPage';
+import { container } from './container';
+
+const userPage = container.get(UserPage);
 userPage.render();

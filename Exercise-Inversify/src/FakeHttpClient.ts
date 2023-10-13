@@ -1,3 +1,4 @@
+import { injectable } from 'inversify';
 import { HttpClientInterface } from './HttpClientInterface';
 
 export class FakeHttpClient implements HttpClientInterface {
