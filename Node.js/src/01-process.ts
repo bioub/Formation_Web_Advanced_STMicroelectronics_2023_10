@@ -32,5 +32,8 @@ console.log(process.platform); // darwin (mac), win32 (windows), linux
 console.log(process.arch); // arm64
 console.log(process.version); // v18.18.1
 
+
+console.log(process.uptime());
+
 process.exit(1); // kill le process avec une erreur
 
