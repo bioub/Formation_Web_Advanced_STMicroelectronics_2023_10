@@ -1,4 +1,5 @@
 import { HttpClient } from "./HttpClient";
+import { HttpClientInterface } from "./HttpClientInterface";
 import { User } from "./model";
 
 export class UserService {
@@ -9,7 +10,7 @@ export class UserService {
   //   this.httpClient = param;
   // }
 
-  constructor(protected httpClient: HttpClient) {}
+  constructor(protected httpClient: HttpClientInterface) {}
 
   async fetchUsers() {
     return await this.httpClient.get<User[]>('http://localhost:3200/users');
