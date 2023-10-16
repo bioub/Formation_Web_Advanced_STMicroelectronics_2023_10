@@ -1,12 +1,15 @@
 import net from 'node:net';
 import process from 'node:process';
 
-const server = net.createServer();
-
-server.on('connection', (socket) => {
+const server = net.createServer((socket) => {
   console.log('connection received port 8080');
   socket.pipe(process.stdout);
 });
+
+// server.on('connection', (socket) => {
+//   console.log('connection received port 8080');
+//   socket.pipe(process.stdout);
+// });
 
 server.on('error', (err) => {
   // console.log('error occured', err);
@@ -15,8 +18,10 @@ server.on('error', (err) => {
   }
 });
 
-server.on('listening', () => {
+// server.on('listening', () => {
+//   console.log('server started on port 8080');
+// });
+
+server.listen(8080, () => {
   console.log('server started on port 8080');
 });
-
-server.listen(8080);
