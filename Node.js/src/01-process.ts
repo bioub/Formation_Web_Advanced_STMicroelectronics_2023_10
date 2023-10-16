@@ -1,5 +1,10 @@
 // function(exports, required, module, __filename, __dirname)
 import process from "node:process";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // node dist/01-process.js --minify --hash
 // manipuler argv via les libs : minimist, yargs, commander

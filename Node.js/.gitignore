@@ -2,3 +2,4 @@ node_modules
 *.copy
 dist
 *.log
+*.zip
