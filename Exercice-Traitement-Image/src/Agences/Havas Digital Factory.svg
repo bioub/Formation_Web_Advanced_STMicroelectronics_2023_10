@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="130px" viewBox="0 0 360 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <polygon id="Path" fill="#656565" points="0 0 0 48 24 48 24 0"></polygon>
+            <polygon id="Path-2" fill="#000000" points="0 48 0 73 48 73 48 120 72 120 72 48"></polygon>
+            <polygon id="Path-3" fill="#989898" points="0 73 24 73 24 120 0 120"></polygon>
+            <text id="havas" font-family="MYingHeiPRCW48-W4, M  PRC" font-size="44" font-weight="normal" fill="#000000">
+                <tspan x="92" y="77">havas</tspan>
+            </text>
+            <text id="digital-factory" font-family="MYingHeiPRCW48-W4, M  PRC" font-size="44" font-weight="normal" fill="#989898">
+                <tspan x="93" y="119">digital factory</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

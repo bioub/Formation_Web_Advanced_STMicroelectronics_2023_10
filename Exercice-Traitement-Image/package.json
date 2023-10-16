@@ -1,0 +1,29 @@
+{
+  "name": "exercice-traitement-image",
+  "version": "1.0.0",
+  "bin": "build.js",
+  "author": "Romain Bohdanowicz <romain.bohdanowicz@formation.tech>",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@types/imagemin": "^8.0.2",
+    "@types/imagemin-svgo": "^10.0.3",
+    "@types/lodash": "^4.14.199",
+    "@types/lodash-es": "^4.17.9",
+    "@types/node": "^18.18.5",
+    "glob": "^10.3.10",
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "sharp": "^0.32.6",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "start": "node build.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  }
+}
