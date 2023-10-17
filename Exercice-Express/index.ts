@@ -1,10 +1,13 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import { ZodError, z } from 'zod';
 
-interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
+const Todo = z.object({
+  title: z.string(),
+  completed: z.boolean().optional(),
+});
+
+type TodoDto = z.infer<typeof Todo>;
+type Todo = TodoDto & { id: number };
 
 const todos: Todo[] = [
   { id: 1, title: 'ABC', completed: false },
@@ -49,13 +52,86 @@ app.get('/api/todos/:todoId', (req, res) => {
 
 // app.post<'/api/todos', undefined, undefined, Omit<Todo, 'id'>>('/api/todos', express.json(), (req, res) => {
 app.post('/api/todos', express.json(), (req, res) => {
-  const todo: Omit<Todo, 'id'> = req.body;
+  const todo: TodoDto = Todo.parse(req.body);
+
+  // Ajouter au tableau
   const newTodo = { id: nextId(), ...todo };
   todos.push(newTodo);
 
   res.statusCode = 201;
   return res.json(newTodo);
 });
+
+app.delete('/api/todos/:todoId', (req, res) => {
+  const todo = todos.find((todo) => todo.id === Number(req.params.todoId));
+
+  if (!todo) {
+    res.statusCode = 404;
+    return res.json({
+      msg: 'Todo not found',
+    });
+  }
+
+  // Suppression du tableau
+  const index = todos.indexOf(todo);
+  todos.splice(index, 1);
+
+  res.json(todo);
+});
+
+app.put('/api/todos/:todoId', express.json(), (req, res) => {
+  const todo: TodoDto = Todo.parse(req.body);
+  const oldTodo = todos.find((todo) => todo.id === Number(req.params.todoId));
+
+  if (!oldTodo) {
+    res.statusCode = 404;
+    return res.json({
+      msg: 'Todo not found',
+    });
+  }
+
+  // Remplacement dans le tableau
+  const index = todos.indexOf(oldTodo);
+  const newTodo: Todo = { id: todos[index].id, ...todo };
+  todos[index] = newTodo;
+
+
+  res.json(oldTodo);
+});
+
+app.patch('/api/todos/:todoId', express.json(), (req, res) => {
+  const todo: TodoDto = Todo.parse(req.body);
+  const oldTodo = todos.find((todo) => todo.id === Number(req.params.todoId));
+
+  if (!oldTodo) {
+    res.statusCode = 404;
+    return res.json({
+      msg: 'Todo not found',
+    });
+  }
+
+  // Mise à jour dans le tableau
+  const index = todos.indexOf(oldTodo);
+  const newTodo: Todo = { ...oldTodo, ...todo };
+  todos[index] = newTodo;
+
+
+  res.json(oldTodo);
+});
+
+app.use(((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof ZodError) {
+    res.statusCode = 400;
+    return res.json({
+      err: err,
+    });
+  }
+
+  res.statusCode = 500;
+  res.json({
+    err: err,
+  })
+}) as any);
 
 app.listen(3001, () => {
   console.log('Server started on port 3001');
