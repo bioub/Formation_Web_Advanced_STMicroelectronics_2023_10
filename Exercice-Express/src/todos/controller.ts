@@ -1,17 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import {
   Todo,
-  TodoDto,
-  create,
-  find,
-  findById,
-  findByIdAndRemove,
-  findByIdAndReplace,
-  findByIdAndUpdate,
-} from './model';
+} from './model-mongoose';
+
 
 export async function listCtrl(req: Request, res: Response) {
-  const todos = await find();
+  const todos = await Todo.find();
   res.json(todos);
 }
 
@@ -20,7 +14,7 @@ export async function showCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo = await findById(req.params.todoId);
+  const todo = await Todo.findById(req.params.todoId);
 
   if (!todo) {
     return next();
@@ -30,10 +24,7 @@ export async function showCtrl(
 }
 
 export async function createCtrl(req: Request, res: Response) {
-  const todo: TodoDto = Todo.parse(req.body);
-
-  // Ajouter au tableau
-  const newTodo = await create(todo);
+  const newTodo = await Todo.create(req.body);
 
   res.statusCode = 201;
   return res.json(newTodo);
@@ -44,7 +35,7 @@ export async function deleteCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo = await findByIdAndRemove(req.params.todoId);
+  const todo = await Todo.findByIdAndRemove(req.params.todoId);
 
   if (!todo) {
     return next();
@@ -58,8 +49,7 @@ export async function replaceCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo: TodoDto = Todo.parse(req.body);
-  const oldTodo = await findByIdAndReplace(req.params.todoId, todo);
+  const oldTodo = await Todo.findOneAndReplace({_id: req.params.todoId}, req.body);
 
   if (!oldTodo) {
     return next();
@@ -73,8 +63,7 @@ export async function updateCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo: TodoDto = Todo.parse(req.body);
-  const oldTodo = await findByIdAndUpdate(req.params.todoId, todo);
+  const oldTodo = await Todo.findByIdAndUpdate(req.params.todoId, req.body);
 
   if (!oldTodo) {
     return next();
