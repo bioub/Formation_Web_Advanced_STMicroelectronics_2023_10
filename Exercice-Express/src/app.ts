@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { ZodError } from 'zod';
 import { router as todoRouter } from './todos/route';
 
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   });
 });
 
-app.use(((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof ZodError) {
     res.statusCode = 400;
     return res.json({
@@ -33,4 +33,4 @@ app.use(((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.json({
     err: err,
   });
-}) as any);
+});

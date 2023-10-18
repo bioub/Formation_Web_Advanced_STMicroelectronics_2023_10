@@ -1,12 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
-import {
-  Todo,
-} from './model-mongoose';
+import { Todo } from './model-mongoose';
 
-
-export async function listCtrl(req: Request, res: Response) {
-  const todos = await Todo.find();
-  res.json(todos);
+export async function listCtrl(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const todos = await Todo.find({}, 'title completed');
+    res.json(todos);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function showCtrl(
@@ -14,20 +19,31 @@ export async function showCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo = await Todo.findById(req.params.todoId);
+  try {
+    const todo = await Todo.findById(req.params.todoId, 'title completed');
 
-  if (!todo) {
-    return next();
+    if (!todo) {
+      return next();
+    }
+
+    res.json(todo);
+  } catch (err) {
+    next(err);
   }
-
-  res.json(todo);
 }
 
-export async function createCtrl(req: Request, res: Response) {
-  const newTodo = await Todo.create(req.body);
-
-  res.statusCode = 201;
-  return res.json(newTodo);
+export async function createCtrl(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const newTodo = await Todo.create(req.body);
+    res.statusCode = 201;
+    return res.json(newTodo);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function deleteCtrl(
@@ -35,13 +51,17 @@ export async function deleteCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const todo = await Todo.findByIdAndRemove(req.params.todoId);
+  try {
+    const todo = await Todo.findByIdAndRemove(req.params.todoId);
 
-  if (!todo) {
-    return next();
+    if (!todo) {
+      return next();
+    }
+
+    res.json(todo);
+  } catch (err) {
+    next(err);
   }
-
-  res.json(todo);
 }
 
 export async function replaceCtrl(
@@ -49,13 +69,20 @@ export async function replaceCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const oldTodo = await Todo.findOneAndReplace({_id: req.params.todoId}, req.body);
+  try {
+    const oldTodo = await Todo.findOneAndReplace(
+      { _id: req.params.todoId },
+      req.body,
+    );
 
-  if (!oldTodo) {
-    return next();
+    if (!oldTodo) {
+      return next();
+    }
+
+    res.json(oldTodo);
+  } catch (err) {
+    next(err);
   }
-
-  res.json(oldTodo);
 }
 
 export async function updateCtrl(
@@ -63,11 +90,15 @@ export async function updateCtrl(
   res: Response,
   next: NextFunction
 ) {
-  const oldTodo = await Todo.findByIdAndUpdate(req.params.todoId, req.body);
+  try {
+    const oldTodo = await Todo.findByIdAndUpdate(req.params.todoId, req.body);
 
-  if (!oldTodo) {
-    return next();
+    if (!oldTodo) {
+      return next();
+    }
+
+    res.json(oldTodo);
+  } catch (err) {
+    next(err);
   }
-
-  res.json(oldTodo);
 }

@@ -1,14 +1,19 @@
 import { Schema, model } from "mongoose";
 
-const todoSchema = new Schema({
+interface Todo {
+  title: string;
+  completed?: boolean;
+}
+
+const todoSchema = new Schema<Todo>({
   title: {
     type: String,
-    required: true,
+    required: [true, 'title is required'],
   },
   completed: {
     type: Boolean,
   },
 });
 
-export const Todo = model('Todo', todoSchema);
+export const Todo = model<Todo>('Todo', todoSchema);
 
