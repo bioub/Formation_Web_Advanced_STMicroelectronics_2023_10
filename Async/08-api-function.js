@@ -213,3 +213,27 @@ class Contact {
 const romain = new Contact();
 romain.hello(); // Hello Romain
 romain.helloWithAsyncCode(); // Hello Romain
+
+
+
+// 2/ appeler une méthode d'une autre "classe" sur un objet d'un autre type (ici arguments)
+// function sum() {
+//   return Array.prototype.reduce.call(arguments, (result, arg) => result + arg, 0);
+// }
+
+// console.log(sum(3, 10, 2)); // 15
+
+// une meilleure version aurait été de convertir arguments en tableau avec Array.from
+// function sum() {
+//   const args = Array.from(arguments);
+//   return args.reduce((result, arg) => result + arg, 0);
+// }
+
+// console.log(sum(3, 10, 2)); // 15
+
+// le meilleure version aurait été de ne pas utiliser arguments
+function sum(...args) {
+  return args.reduce((result, arg) => result + arg, 0);
+}
+
+console.log(sum(3, 10, 2)); // 15
