@@ -5,10 +5,14 @@
 
 import { ReactNode } from "react";
 
-function TodoSpanValue(): ReactNode {
+type Props = {
+  value: string;
+}
+
+function TodoSpanValue({ value }: Props): ReactNode {
   return (
     <span className="TodoSpanValue">
-      ABC
+      {value}
     </span>
   )
 }

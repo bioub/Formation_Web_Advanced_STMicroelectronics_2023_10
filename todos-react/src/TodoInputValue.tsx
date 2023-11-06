@@ -1,8 +1,12 @@
 import { ReactNode } from "react";
 
-function TodoInputValue(): ReactNode {
+type Props = {
+  value: string;
+}
+
+function TodoInputValue({ value }: Props): ReactNode {
   return (
-    <input className="TodoInputValue" value="ABC" />
+    <input className="TodoInputValue" value={value} />
   )
 }
 

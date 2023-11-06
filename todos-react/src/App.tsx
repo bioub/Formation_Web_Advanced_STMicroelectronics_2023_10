@@ -10,9 +10,9 @@ function App() {
         <button>+</button>
       </form>
       <div className="todos-container">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        <TodoItem todo={{ _id: 'abcdef1234', title: 'ABC', completed: false }} />
+        <TodoItem todo={{ _id: 'dngudtub45', title: 'DEF', completed: true }} />
+        <TodoItem todo={{ _id: 'dfgfg35335', title: 'XYZ', completed: false }} />
       </div>
     </div>
   );
