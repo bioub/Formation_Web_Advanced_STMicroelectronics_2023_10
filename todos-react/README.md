@@ -130,3 +130,20 @@ const editingId = 'dfgfg35335';
 ```
 
 Transformer le JSX de `App` pour qu'il dépende de ces variables
+
+## Event et State
+
+Modifier `App` de sorte à ce que `todos` soit défini dans le state (avec `useState`)
+
+Créer un nouveau state `newTodo` avec la valeur saisie dans le champ (comme `UserForm`).
+
+Au submit du formulaire utiliser `setTodos` pour ajouter un nouvel élement au tableau en utilisant la syntaxe suivante :
+
+```
+setTodos(
+  [
+    ...todos,
+    { /*  la nouvelle todo avec _id (Math.random().toString()), title et completed  */ }
+  ]
+)
+```
