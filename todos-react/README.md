@@ -109,3 +109,24 @@ Modifier le code de `TodoItem` de façon à :
 Déclarer ensuite la prop `title` dans `TodoSpanValue` et l'afficher dans la balise `<span>`
 
 Utiliser `TypeScript` pour typer les props.
+
+## JSX conditionnel et listes
+
+Ajouter une prop `isEditing` au composant `TodoItem`, elle doit être optionnelle, de type boolean et avoir en valeur par défault `false`.
+
+Dans le JSX de `TodoItem` si `isEditing` vaut `false`, continuer d'afficher le composant `TodoSpanValue`, par contre si `isEditing` vaut `true` afficher le composant `TodoInputValue`.
+
+Tester depuis `App` que les composants s'affichent correctement si on passe `isEditing={true}` ou `isEditing={false}` à `TodoItem`
+
+Créer dans `App` les 2 variables suivantes :
+
+```
+const todos = [
+  { _id: 'abcdef1234', title: 'ABC', completed: false },
+  { _id: 'dngudtub45', title: 'DEF', completed: true },
+  { _id: 'dfgfg35335', title: 'XYZ', completed: false },
+];
+const editingId = 'dfgfg35335';
+```
+
+Transformer le JSX de `App` pour qu'il dépende de ces variables
