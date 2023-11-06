@@ -108,6 +108,4 @@ Modifier le code de `TodoItem` de façon à :
 
 Déclarer ensuite la prop `title` dans `TodoSpanValue` et l'afficher dans la balise `<span>`
 
-Installer ensuite `prop-types` et valider les props de `TodoItem` et `TodoSpanValue` (toutes les props sont obligatoires, choisir les bons types).
-
-Bonus : au lieu de `prop-types` utiliser `TypeScript` pour typer les props (nécessite de créer un nouveau projet).
+Utiliser `TypeScript` pour typer les props (nécessite de créer un nouveau projet).
