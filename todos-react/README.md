@@ -108,4 +108,4 @@ Modifier le code de `TodoItem` de façon à :
 
 Déclarer ensuite la prop `title` dans `TodoSpanValue` et l'afficher dans la balise `<span>`
 
-Utiliser `TypeScript` pour typer les props (nécessite de créer un nouveau projet).
+Utiliser `TypeScript` pour typer les props.
