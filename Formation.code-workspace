@@ -32,6 +32,12 @@
 		},
 		{
 			"path": "Exercice-Express"
+		},
+		{
+			"path": "react"
+		},
+		{
+			"path": "todos-react"
 		}
 	],
 	"settings": {

@@ -24,7 +24,7 @@ rs.on('close', () => {
 
 // Sous un environnement Posix (Linux, Mac, Git Bash, WSL)
 // on peut chainer les programmes avec des pipes
-// cat big-file.html | gzip > big-file.html.copy
+// cat big-file.html | gzip > big-file.html.zip
 
 // Dans l'API stream on peut faire pareil
 rs.pipe(ts).pipe(ws);
