@@ -85,3 +85,29 @@ Enfin utiliser `TodoItem` 3 fois dans `App`
   <TodoItem />
 </div>
 ```
+
+## Props
+
+Déclarer une prop todo dans `TodoItem`.
+
+Cette prop doit être un objet avec 3 clés :
+- `_id` de type `string`
+- `title` de type `string`
+- `completed` de type `boolean`
+
+Dans `App` passer ensuite un objet d'exemple différent à chaque `<TodoItem />` par exemple :
+
+```
+{ _id: 'abcdef1234', title: 'ABC', completed: false }
+```
+
+Modifier le code de `TodoItem` de façon à :
+- affecter `_id` à `data-todo-id`
+- affecter `completed` à la propriété `checked` de la checkbox
+- passer `title` en prop de `<TodoSpanValue />`
+
+Déclarer ensuite la prop `title` dans `TodoSpanValue` et l'afficher dans la balise `<span>`
+
+Installer ensuite `prop-types` et valider les props de `TodoItem` et `TodoSpanValue` (toutes les props sont obligatoires, choisir les bons types).
+
+Bonus : au lieu de `prop-types` utiliser `TypeScript` pour typer les props (nécessite de créer un nouveau projet).
