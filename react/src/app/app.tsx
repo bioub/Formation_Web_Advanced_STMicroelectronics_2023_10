@@ -8,7 +8,8 @@ export function App() {
   return (
     // React.createElement('div', { className: 'App' }, 'Hello')
     <div className="App">
-      <Hello />
+      <Hello name="Romain" age={38} />
+      {/* React.createElement(Hello, { name: 'Romain', age: 38, isActive: true }) */}
     </div>
   );
 }
