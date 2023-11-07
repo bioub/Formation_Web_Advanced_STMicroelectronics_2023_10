@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import styles from './select.module.scss';
 
 type Option = {
@@ -11,7 +11,7 @@ type Props = {
 };
 
 function Select({ options }: Props) {
-  const menuOpen = true;
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // JSX Conditionnel
   // let menu = null;
@@ -33,11 +33,11 @@ function Select({ options }: Props) {
   // }
 
   // Sous forme d'expression boucle
-  const items = options.map((option) => <div key={option.value}>{ option.label }</div>);
+  const items = options.map((option) => <div key={option.value} onClick={() => setMenuOpen(false)}>{ option.label }</div>);
 
   return (
     <div className={styles.Select}>
-      <div className={styles.selected}>Selected value</div>
+      <div className={styles.selected} onClick={() => setMenuOpen(true)}>Selected value</div>
       {menuOpen && (
         <div className={styles.menu}>
           {items}

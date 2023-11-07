@@ -4,6 +4,7 @@ import styles from './app.module.scss';
 import Hello from './hello';
 import Select from './select';
 import UserForm from './user-form';
+import { ClockClass, ClockFunction } from './clock';
 
 
 const options = [
@@ -17,9 +18,11 @@ export function App() {
     // React.createElement('div', { className: 'App' }, 'Hello')
     <div className="App">
       <Hello name="Romain" age={38} isActive />
-      {/* React.createElement(Hello, { name: 'Romain' }) */}
+      {/* React.createElement(Hello, { name: 'Romain', age: 38, isActive: true }) */}
       <Select options={options} />
       <UserForm />
+      <ClockClass />
+      <ClockFunction />
     </div>
   );
 }
