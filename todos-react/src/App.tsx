@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <form className="todos-form" onSubmit={handleSubmit}>
         <input type="checkbox" className="todos-toggle-checked" />
-        <input type="text" className="todos-new-input" value={newTodo} onChange={(event) => setNewTodo(event.target.value)}  />
+        <input type="text" placeholder="Type a todo" className="todos-new-input" value={newTodo} onChange={(event) => setNewTodo(event.target.value)}  />
         <button>+</button>
       </form>
       <div className="todos-container">
